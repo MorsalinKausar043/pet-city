@@ -1,0 +1,18 @@
+.recent_postImg{
+    border-radius: 5px !important;
+    border: 2px solid #333;
+    outline: 2px solid whitesmoke;
+    position: relative;
+};
+
+.recent_postImg::before{
+    content: "kausar";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+    background: #000;
+}
