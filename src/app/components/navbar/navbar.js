@@ -1,13 +1,17 @@
-import React from 'react'
+import NavbarHead from "./navbarHead";
+
 
 const Navbar = () => {
   return (
     <>
-      <div>
-        <h1 className="text-center text-red-900">navbar page</h1>
-      </div>
+      <main
+        className={` w-full h-full flex flex-col justify-center items-center`}
+      >
+        {/* navber hear  */}
+        <NavbarHead/>
+      </main>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import style from "../style/ownersitter.module.css";
-import { BsSearch } from "react-icons/bs";
-import { FaIdCard } from "react-icons/fa";
+import { MdCreate } from "react-icons/md";
+import { AiTwotoneCalendar } from "react-icons/ai";
 import { FiArrowRightCircle } from "react-icons/fi";
+import { BsStarFill } from "react-icons/bs";
 
 const Sitter = () => {
   const data = [
@@ -11,19 +12,19 @@ const Sitter = () => {
       id: 1,
       title: "Create a Free Profile",
       body: "Create a free profile now and start your business of pet sitting!",
-      icon: <BsSearch />,
+      icon: <MdCreate />,
     },
     {
       id: 2,
       title: "Set Your Schedule",
       body: "You can set online/offline depending on your demand that you want any pet to sit or not as per your need",
-      icon: <FaIdCard />,
+      icon: <AiTwotoneCalendar />,
     },
     {
       id: 3,
       title: "Become a Star",
       body: "After compleating some successfull pet sitting you will be awarded with the best pet sitter badge which will show on top of your profile!",
-      icon: <BsSearch />,
+      icon: <BsStarFill />,
     },
   ];
   return (
@@ -74,7 +75,7 @@ const Sitter = () => {
             </>
           ))}
           <div className="mt-14">
-            <button className="bg-sky-500 flex flex-row justify-center items-center hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-2 px-4 border-b-4 border-sky-700 hover:border-sky-700 rounded">
+            <button className="bg-sky-500 flex flex-row justify-center items-center hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded">
               <span className="inline-block mr-2">View All Pets Sitters</span>
               <FiArrowRightCircle className="inline-block text-xl" />
             </button>

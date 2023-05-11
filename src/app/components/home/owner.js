@@ -4,6 +4,7 @@ import style from "../style/ownersitter.module.css";
 import {BsSearch} from "react-icons/bs";
 import { FaIdCard } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
+import { MdDone } from "react-icons/md";
 
 const Owner = () => {
   const data = [
@@ -23,7 +24,7 @@ const Owner = () => {
       id: 3,
       title: "Find Your Perfect Pet Sitter",
       body: "You don't need to worry about your pet, all the pet sitters here are very experienced and skillful here",
-      icon: <BsSearch />,
+      icon: <MdDone />,
     },
   ];
   return (
@@ -74,7 +75,7 @@ const Owner = () => {
             </>
           ))}
           <div className="mt-14">
-            <button className="bg-sky-500 flex flex-row justify-center items-center hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-2 px-4 border-b-4 border-sky-700 hover:border-sky-700 rounded">
+            <button className="bg-sky-500 flex flex-row justify-center items-center hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded">
               <span className="inline-block mr-2">View All Pets Sitters</span>
               <FiArrowRightCircle className="inline-block text-xl" />
             </button>
