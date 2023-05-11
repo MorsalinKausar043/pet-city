@@ -1,0 +1,135 @@
+.bg_image {
+  background-image: url("/src/assets/apple-touch-icon-72x72.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* owner part  */
+.owner_img_box {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.owner_img_box img {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  max-width: 85%;
+  height: auto;
+  max-width: 100%;
+}
+
+.owner_img_box:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  border-radius: 50%;
+  background: #a6ce39;
+  width: 345px;
+  height: 355px;
+  margin: 0 0 0 -120px;
+  z-index: 1;
+}
+
+.owner_img_box:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  width: 271px;
+  height: 273px;
+  margin: 0 0 0 -100px;
+  z-index: 1;
+}
+
+@media (max-width: 410px) {
+  .owner_img_box:before {
+    width: 240px;
+    height: 240px;
+  }
+
+  .owner_img_box:after {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* sitter part  */
+.sitter_img_box {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.sitter_img_box img {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  max-width: 85%;
+  height: auto;
+  max-width: 100%;
+}
+
+.sitter_img_box:before {
+  content: "";
+  display: block;
+  position: absolute;
+      left: 45%;
+  top: 0;
+  border-radius: 50%;
+  background: #a6ce39;
+  width: 372px;
+  height: 387px;
+  margin: 0 0 0 -120px;
+  z-index: 1;
+}
+
+.sitter_img_box:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 47%;
+  top: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  width: 315px;
+  height: 340px;
+  margin: 0 0 0 -100px;
+  z-index: 1;
+}
+
+@media (max-width: 520px) {
+  .sitter_img_box:before {
+    width: 280px;
+    height: 275px;
+  }
+
+  .sitter_img_box:after {
+    width: 225px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 410px) {
+  .sitter_img_box:before {
+    width: 240px;
+    height: 240px;
+  }
+
+  .sitter_img_box:after {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* icon  */
+
+.icon_box:hover .icon {
+  color: white;
+}
