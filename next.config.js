@@ -6,6 +6,7 @@ const nextConfig = {
       "media.istockphoto.com",
       "demoapus2.com",
       "github.com",
+      "dummyimage.com",
     ],
   },
   reactStrictMode: true,
