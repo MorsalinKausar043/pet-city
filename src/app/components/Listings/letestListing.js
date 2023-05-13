@@ -1,7 +1,6 @@
-import React from 'react'
 import Image from "next/image";
-import { MdLocationPin } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
+import { MdLocationPin } from "react-icons/md";
 
 const LatestListing = () => {
     const listingData = [
