@@ -49,7 +49,7 @@ const LatestListing = () => {
         {listingData.map((val) => (
           <div
             key={val.id}
-            className="w-44 mt-2 mr-2 md:mr-0 box-border bg-white border-2 border-white p-1 rounded-md shadow-lg shadow-gray-300/80"
+            className="w-44 mt-2 hover:scale-105 transition mr-2 md:mr-0 box-border bg-white border-2 border-white p-1 rounded-md shadow-lg shadow-gray-300/80"
           >
             {/* image  */}
             <div className="mb-2">

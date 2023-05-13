@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 const Slider = ({
   children: slides,
   autoSlide = false,
-  autoSlideInterval = 3000,
+  autoSlideInterval = 30000,
 }) => {
   const [curr, setCurr] = useState(0);
 

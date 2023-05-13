@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/navbar";
 import OwnerSitter from "./components/home/OwnerSitter";
 import MainFeatures from "./components/home/mainfeatures/mainFeatures";
 import Listing from "./components/Listings/listing";
+import Review from "./components/review/Review";
 
 const page = () => {
   return (
@@ -17,6 +18,8 @@ const page = () => {
           <OwnerSitter />
         {/* main features showing part  */}
           <MainFeatures />
+        {/* clients comment features showing part  */}
+          <Review />
       </main>
     </>
   );
