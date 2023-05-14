@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import React from 'react'
-import style from "../style/ownersitter.module.css";
-import {BsSearch} from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 import { FaIdCard } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
+import style from "../style/ownersitter.module.css";
 
 const Owner = () => {
   const data = [
