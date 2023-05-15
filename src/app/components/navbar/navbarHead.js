@@ -39,6 +39,12 @@ const NavbarHead = () => {
                 {"CONTACT"}
               </span>
             </Link>
+            <span className="mx-3 text-xs font-light text-gray-400">|</span>
+            <Link href="/jobpost">
+              <span className="text-xs font-light text-gray-400 hover:text-gray-100 transition">
+                {"JOB POST"}
+              </span>
+            </Link>
           </div>
           {/* right side  */}
           <div>

@@ -13,7 +13,7 @@ const page = () => {
   return (
     <>
       <main className="w-full">
-        <section className="container px-2 md:px-10 lg:px-20 mx-auto py-10">
+        <section className="container px-2 md:px-24 lg:px-60 mx-auto py-10">
           <div className="py-10 box-border bg-white border-2 border-white p-5 rounded-md shadow-lg shadow-gray-300/80">
             <h1 className="text-lg font-bold text-gray-500 mb-5">Login</h1>
             <form onSubmit={handleLoginSubmit}>
