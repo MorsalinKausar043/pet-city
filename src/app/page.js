@@ -3,20 +3,23 @@ import Navbar from "./components/navbar/navbar";
 import OwnerSitter from "./components/home/OwnerSitter";
 import MainFeatures from "./components/home/mainfeatures/mainFeatures";
 import Listing from "./components/Listings/listing";
+import Review from "./components/review/Review";
+import HeroArea from "./components/home/heroarea/heroArea";
 
 const page = () => {
   return (
     <>
       <main>
-        <div className="w-full h-full flex justify-center items-center">
-          <h1>hello world this is Pet-City!</h1>
-        </div>
+        {/* hero area part  */}
+        <HeroArea />
         {/* listings part  */}
-          <Listing />
+        <Listing />
         {/* owner and sitter function  */}
-          <OwnerSitter />
+        <OwnerSitter />
         {/* main features showing part  */}
-          <MainFeatures />
+        <MainFeatures />
+        {/* clients comment features showing part  */}
+        <Review />
       </main>
     </>
   );
