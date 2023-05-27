@@ -41,7 +41,7 @@ const InputBox = () => {
             </select>
           </div>
           <button className="text-white bg-lime-500 border-0 mt-2 py-2 px-6 focus:outline-none hover:bg-lime-600 rounded text-lg">
-            Button
+            Search
           </button>
         </div>
       </div>

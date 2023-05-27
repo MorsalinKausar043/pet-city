@@ -9,7 +9,7 @@ import Image from "next/image";
 const Nav = () => {
   let Links = [
     { name: "HOME", link: "/" },
-    { name: "SERVICE", link: "/" },
+    { name: "JOBS", link: "/job" },
     { name: "ABOUT", link: "/about" },
     { name: "POST JOB", link: "/jobpost" },
     { name: "CONTACT", link: "/contact" },
@@ -51,7 +51,7 @@ const Nav = () => {
             >
               <Link
                 href={link.link}
-                className="text-gray-800 hover:text-gray-400 duration-500"
+                className="text-gray-800 hover:text-lime-500 duration-500"
               >
                 {link.name}
               </Link>
