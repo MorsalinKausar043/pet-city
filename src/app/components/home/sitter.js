@@ -75,8 +75,8 @@ const Sitter = () => {
             </>
           ))}
           <div className="mt-14">
-            <button className="bg-sky-500 flex flex-row justify-center items-center hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded">
-              <span className="inline-block mr-2">View All Pets Sitters</span>
+            <button className="bg-lime-500 flex flex-row justify-center items-center hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-semibold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded">
+              <span className="inline-block mr-2">Join as a Pets Sitters</span>
               <FiArrowRightCircle className="inline-block text-xl" />
             </button>
           </div>
