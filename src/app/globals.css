@@ -2,49 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-.hero_area{
-    background: url("/bg1.jpg");
-    background-size: cover;
+.hero_area {
+  background: url("/bg1.jpg");
+  background-size: cover;
 }
 
 /* swiper slider  */
-.swiper-button-next:after, .swiper-button-prev:after {
-    font-size: 18px !important;
-    background: #fff;
-    padding: 6px 8px;
-    border-radius: 50%;
-    opacity: 0.8;
-    color: #333 !important;
-};
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px !important;
+  background: #fff;
+  padding: 6px 8px;
+  border-radius: 50%;
+  opacity: 0.8;
+  color: #333 !important;
+}
 
-.extra_line{
-    position: relative !important;
+.extra_line {
+  position: relative !important;
 }
-.extra_line:before{
-    content: "";
-    display: block !important;
-    width: 10px;
-    height: 10px;
-    background: #8a8585;
-    position: absolute !important;
-    border-radius: 50%;
-    bottom: -5px !important;
-    right: -2px !important;
+.extra_line:before {
+  content: "";
+  display: block !important;
+  width: 10px;
+  height: 10px;
+  background: #8a8585;
+  position: absolute !important;
+  border-radius: 50%;
+  bottom: -5px !important;
+  right: -2px !important;
 }
-.extra_line2:before{
-    content: "";
-    display: block !important;
-    width: 10px;
-    height: 10px;
-    background: #8a8585;
-    position: absolute !important;
-    border-radius: 50%;
-    bottom: -5px !important;
-    left: -2px !important;
+.extra_line2:before {
+  content: "";
+  display: block !important;
+  width: 10px;
+  height: 10px;
+  background: #8a8585;
+  position: absolute !important;
+  border-radius: 50%;
+  bottom: -5px !important;
+  left: -2px !important;
 }
 
 /* hero area  */
-.nextimg{
+.nextimg {
   width: 100%;
   height: 57%;
   border-radius: 5px;
@@ -52,9 +53,22 @@
   transform: scaleX(-1);
 }
 
-@media  (max-width:532px) {
-    .nextimg{
-  height: 60.5%;
-}
+@media (max-width: 532px) {
+  .nextimg {
+    height: 60.5%;
+  }
 }
 
+/* login page css  */
+.login_page {
+  background: url("/login_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* sign up page css  */
+.signUp_page {
+  background: url("/signUp_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: center;
+}
