@@ -1,67 +1,97 @@
 "use client";
-import { useState } from "react";
+
+import { useState as UseState } from "react";
 
 const page = () => {
-  const [email, setEmail] = useState("");
-  const [passwordOne, setPasswordOne] = useState("");
-  const [passwordTwo, setPasswordTwo] = useState("");
-
-  const handleLoginSubmit = e => {
+  const [name, setName] = UseState("");
+  const [email, setEmail] = UseState("");
+  const [password, setPassword] = UseState("");
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    
-    alert("Data Submitted")
-  }
+    console.log(email, password);
+    alert("Data Submitted");
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
   return (
     <>
-      <main className="w-full">
-        <section className="container px-2 md:px-24 lg:px-60 mx-auto py-10">
-          <div className="py-10 box-border bg-white border-2 border-white p-5 rounded-md shadow-lg shadow-gray-300/80">
-            <h1 className="text-lg font-bold text-gray-500 mb-5">Register</h1>
-            <form onSubmit={handleLoginSubmit}>
-              <h4 className="text-sm text-gray-700 mb-2">Username or email address <span className="text-red-500">*</span></h4>
+      <main
+        className={`w-full flex flex-col justify-center items-center signUp_page`}
+      >
+        <div className="container text-gray-600 px-5 py-24 md:py-40">
+          <form
+            onSubmit={handleLoginSubmit}
+            className="w-full lg:w-2/6 md:w-1/2 bg-gray-100 bg-opacity-20 drop-shadow-lg shadow-gray-300/50 rounded-lg p-8 mx-auto flex flex-col mt-10 md:mt-0"
+          >
+            <h2 className="text-gray-100 text-lg font-medium title-font mb-5">
+              Sign Up
+            </h2>
+            <div className="relative mb-4">
+              <label
+                htmlFor="email"
+                className="leading-7 text-sm text-gray-200"
+              >
+                User Name
+              </label>
               <input
-                  type="text"
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
-                  placeholder="Enter your email here"
-                />
-              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-2 lg:gap-2">
-                  <div className="w-full">
-                      <h4 className="text-sm text-gray-700 mb-2">Password <span className="text-red-500">*</span></h4>
-                      <input
-                          type="password"
-                          required
-                          onChange={(e) => setPasswordOne(e.target.value)}
-                          className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
-                          placeholder="Enter your password here"
-                        />
-                  </div>
-                  <div className="w-full">
-                      <h4 className="text-sm text-gray-700 mb-2">Re-enter Password <span className="text-red-500">*</span></h4>
-                      <input
-                          type="password"
-                          required
-                          onChange={(e) => setPasswordTwo(e.target.value)}
-                          className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
-                          placeholder="Enter your password here"
-                        />
-                  </div>
-              </div>
-              <button className="bg-sky-500 hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded">
-              Register
-              </button> 
-              {/* <input 
-                type="submit"
-                className="bg-sky-500 hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded"
-                value="Register"
-              /> */}
-            </form>
-          </div>
-        </section>
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="w-full bg-transparent text-white rounded border border-gray-300 focus:border-lime-500 focus:ring-2 focus:ring-lime-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
+            </div>
+            <div className="relative mb-4">
+              <label
+                htmlFor="email"
+                className="leading-7 text-sm text-gray-200"
+              >
+                User Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="w-full bg-transparent text-white rounded border border-gray-300 focus:border-lime-500 focus:ring-2 focus:ring-lime-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+            </div>
+            <div className="relative mb-4">
+              <label
+                htmlFor="email"
+                className="leading-7 text-sm text-gray-200"
+              >
+                User Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                className="w-full bg-transparent text-white rounded border border-gray-300 focus:border-lime-500 focus:ring-2 focus:ring-lime-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
+            <button
+              type="submit"
+              className="text-white bg-lime-500 border-0 py-2 px-8 focus:outline-none hover:bg-lime-600 rounded text-lg"
+            >
+              Sign Up
+            </button>
+            <p className="text-xs text-gray-200 mt-3">
+              Literally you probably {"haven't"} heard of them jean shorts.
+            </p>
+          </form>
+        </div>
       </main>
     </>
   );
-}
+};
 
-export default page
+export default page;

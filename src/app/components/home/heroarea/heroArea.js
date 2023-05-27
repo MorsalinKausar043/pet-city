@@ -10,7 +10,7 @@ const HeroArea = () => {
       >
         <section className="px-2 md:px-10 lg:px-20 container py-10 md:py-16 mx-auto ">
           <div className="p-1 rounded-md shadow-xl shadow-lime-400/20 border-[2px] border-lime-400 overflow-hidden">
-            <div class="text-gray-600 body-font relative ">
+            <div className="text-gray-600 body-font relative ">
               {/* slider part  */}
               <Sliders />
               {/* input box part */}
