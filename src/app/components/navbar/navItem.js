@@ -9,10 +9,10 @@ import Image from "next/image";
 const Nav = () => {
   let Links = [
     { name: "HOME", link: "/" },
-    { name: "SERVICE", link: "/" },
-    { name: "ABOUT", link: "/" },
-    { name: "BLOG'S", link: "/" },
-    { name: "CONTACT", link: "/" },
+    { name: "JOBS", link: "/job" },
+    { name: "ABOUT", link: "/about" },
+    { name: "POST JOB", link: "/jobpost" },
+    { name: "CONTACT", link: "/contact" },
   ];
   let [open, setOpen] = useState(false);
   return (
@@ -22,7 +22,14 @@ const Nav = () => {
           className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
       text-gray-800"
         >
-          <Image src="/petcity3.png" width={140} height={100} alt="petCity-logo-image" />
+          <Link href="/">
+            <Image
+              src="/petcity3.png"
+              width={140}
+              height={100}
+              alt="petCity-logo-image"
+            />
+          </Link>
         </div>
 
         <div
@@ -44,13 +51,13 @@ const Nav = () => {
             >
               <Link
                 href={link.link}
-                className="text-gray-800 hover:text-gray-400 duration-500"
+                className="text-gray-800 hover:text-lime-500 duration-500"
               >
                 {link.name}
               </Link>
             </li>
           ))}
-          <Button>Get Started</Button>
+          <Button>Join Us</Button>
         </ul>
       </div>
     </div>

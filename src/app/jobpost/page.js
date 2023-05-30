@@ -1,11 +1,10 @@
 "use client";
-import { useState } from "react";
+
 
 const page = () => {
   const jobTypes = [ "Unspecified", "Pet Sitter", "Dog Sitter", "Cat Sitter", "Dog Walker"];
   const jobCategories = [ "Unspecified", "Pet Feeding", "Cat Feeding"];
 
-  const [formData, setFormData] = useState({});
 
   const handleOnChange = e => {
     const { name, value } = e.target;
@@ -13,9 +12,6 @@ const page = () => {
   }
   const handleLoginSubmit = e => {
     e.preventDefault();
-    console.log("submit--", formData);
-    // alert("Data Submitted")
-    setFormData({});
   }
 // console.log("jobType---", jobType)
 // console.log("jobCategory---", formData)

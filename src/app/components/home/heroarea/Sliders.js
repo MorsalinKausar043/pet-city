@@ -27,7 +27,7 @@ const Sliders = () => {
     ];
   return (
     <>
-      <div class="absolute w-full h-full inset-0 rounded-md pb-2">
+      <div className="absolute w-full h-full inset-0 rounded-md pb-2">
         <Swiper
           className="mySwiper swiper-h"
           spaceBetween={50}

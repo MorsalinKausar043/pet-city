@@ -4,6 +4,7 @@ import { FaIdCard } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
 import style from "../style/ownersitter.module.css";
+import Link from 'next/link';
 
 const Owner = () => {
   const data = [
@@ -74,10 +75,12 @@ const Owner = () => {
             </>
           ))}
           <div className="mt-14">
-            <button className="bg-sky-500 flex flex-row justify-center items-center hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded">
-              <span className="inline-block mr-2">View All Pets Sitters</span>
-              <FiArrowRightCircle className="inline-block text-xl" />
-            </button>
+            <Link href="/job">
+              <button className="bg-lime-500 flex flex-row justify-center items-center hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-semibold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded">
+                <span className="inline-block mr-2">View All Pets Sitters</span>
+                <FiArrowRightCircle className="inline-block text-xl" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
