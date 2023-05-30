@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./components/navbar/navbar";
 import OwnerSitter from "./components/home/OwnerSitter";
 import MainFeatures from "./components/home/mainfeatures/mainFeatures";
 import Listing from "./components/Listings/listing";

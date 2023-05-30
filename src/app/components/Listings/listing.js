@@ -1,9 +1,7 @@
-import FeaturedListing from "./feturedListing";
 import LatestListing from "./letestListing";
-
+import FeaturedListing from "./feturedListing";
 
 const Listing = () => {
-    
   return (
     <>
       <main className="bg-gray-100 w-full h-full flex flex-col justify-center items-center ">

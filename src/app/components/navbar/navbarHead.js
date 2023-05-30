@@ -28,24 +28,6 @@ const NavbarHead = () => {
                 {"FAQ'S"}
               </span>
             </Link>
-            <span className="mx-3 text-xs font-light text-gray-400">|</span>
-            <Link href="/about">
-              <span className="text-xs font-light text-gray-400 hover:text-gray-100 transition">
-                {"ABOUT"}
-              </span>
-            </Link>
-            <span className="mx-3 text-xs font-light text-gray-400">|</span>
-            <Link href="/contact">
-              <span className="text-xs font-light text-gray-400 hover:text-gray-100 transition">
-                {"CONTACT"}
-              </span>
-            </Link>
-            <span className="mx-3 text-xs font-light text-gray-400">|</span>
-            <Link href="/jobpost">
-              <span className="text-xs font-light text-gray-400 hover:text-gray-100 transition">
-                {"JOB POST"}
-              </span>
-            </Link>
           </div>
           {/* middle side  */}
           <div>
