@@ -6,7 +6,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 const NavbarHead = () => {
   return (
     <>
-      <section className="bg-zinc-800 w-full h-auto hidden md:block border-b-4 border-lime-400 sticky top-0">
+      <section className="bg-zinc-800 w-full h-auto hidden md:block border-b-4 border-lime-400">
         {/* navbar top part  */}
         <div className="px-2 md:px-10 lg:px-20 container py-10 md:py-2 mx-auto flex justify-between items-center">
           {/* left side  */}

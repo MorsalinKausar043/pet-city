@@ -1,50 +1,51 @@
-import Image from "next/image";
-import Link from "next/link";
+
+import Image from 'next/image';
+import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const OurTeam = () => {
-  const members = [
-    {
-      _id: 1,
-      full_name: "John Doe",
-      designation: "CEO",
-      body: "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
-      img: "https://api.softexsolution.com/1681192550303.png",
-      facebook: <FaFacebookF />,
-      linkedin: <FaLinkedinIn />,
-      instagram: <FaInstagram />,
-    },
-    {
-      _id: 2,
-      full_name: "Michael Smith",
-      designation: "Web Designer",
-      body: "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
-      img: "https://api.softexsolution.com/1681192651460.png",
-      facebook: <FaFacebookF />,
-      linkedin: <FaLinkedinIn />,
-      instagram: <FaInstagram />,
-    },
-    {
-      _id: 3,
-      full_name: "Sasha Gray",
-      designation: "PHP Developer",
-      body: "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
-      img: "https://api.softexsolution.com/1681207882363.jpg",
-      facebook: <FaFacebookF />,
-      linkedin: <FaLinkedinIn />,
-      instagram: <FaInstagram />,
-    },
-    {
-      _id: 4,
-      full_name: "Hanna Doe",
-      designation: "HTML Coder",
-      body: "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
-      img: "https://api.softexsolution.com/1681207894912.jpg",
-      facebook: <FaFacebookF />,
-      linkedin: <FaLinkedinIn />,
-      instagram: <FaInstagram />,
-    },
-  ];
+      const members = [
+            {
+                  "_id": 1,
+                  "full_name": "John Doe",
+                  "designation": "CEO",
+                  "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
+                  "img": "https://api.softexsolution.com/1681192550303.png",
+                  "facebook": <FaFacebookF/>,         
+                  "linkedin": <FaLinkedinIn/>,         
+                  "instagram": <FaInstagram/>         
+            },
+            {
+                  "_id": 2,
+                  "full_name": "Michael Smith",
+                  "designation": "Web Designer",
+                  "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
+                  "img": "https://api.softexsolution.com/1681192651460.png",
+                  "facebook": <FaFacebookF/>,         
+                  "linkedin": <FaLinkedinIn/>,         
+                  "instagram": <FaInstagram/>   
+            },
+            {
+                  "_id": 3,
+                  "full_name": "Sasha Gray",
+                  "designation": "PHP Developer",
+                  "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
+                  "img": "https://api.softexsolution.com/1681207882363.jpg",
+                  "facebook": <FaFacebookF/>,         
+                  "linkedin": <FaLinkedinIn/>,         
+                  "instagram": <FaInstagram/>  
+            },
+            {
+                  "_id": 4,
+                  "full_name": "Hanna Doe",
+                  "designation": "HTML Coder",
+                  "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
+                  "img": "https://api.softexsolution.com/1681207894912.jpg",
+                  "facebook": <FaFacebookF/>,         
+                  "linkedin": <FaLinkedinIn/>,         
+                  "instagram": <FaInstagram/>  
+            },
+      ]
   return (
     <>
       <main className="w-full">
@@ -53,17 +54,13 @@ const OurTeam = () => {
             Our Team
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {members?.map((member, idx) => (
+            {members?.map((member) => (
               <div
                 key={member._id}
                 className="relative group overflow-hidden box-border bg-white border-2 border-white p-1 rounded-md shadow-lg shadow-gray-300/80"
               >
                 <div className="relative w-full h-[245px]">
-                  <Image
-                    alt="Developer"
-                    src={member.img}
-                    fill={true}
-                  />
+                  <Image alt="Developer" src={member.img} fill={true} />
                   <div className="invisible group-hover:visible absolute top-0 left-0 w-full h-full bg-[rgba(17,34,49,0.4)]">
                     <div className="absolute bottom-[32px] w-full flex justify-center gap-[16px] mt-auto">
                       <Link
@@ -103,6 +100,7 @@ const OurTeam = () => {
                 </div>
               </div>
             ))}
+     
           </div>
         </section>
       </main>

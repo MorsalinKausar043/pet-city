@@ -1,17 +1,10 @@
 "use client"
-
 import React, { useRef, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-
 import { MdLocationPin } from "react-icons/md";
 import { BiLogIn } from "react-icons/bi";
-
-// import required modules
 import { Navigation } from "swiper";
 import Image from "next/image";
 
@@ -50,8 +43,6 @@ const SliderSwiper = () => {
     <>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {sliderImage.map((val) => (
-          // <div className="w-full h-auto" key={val.id}>
-          <>
             <SwiperSlide key={val.id}>
               <Image
                 key={val.id}
@@ -95,7 +86,6 @@ const SliderSwiper = () => {
                 </div>
               </div>
             </SwiperSlide>
-          </>
         ))}
       </Swiper>
     </>

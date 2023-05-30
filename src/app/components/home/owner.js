@@ -1,10 +1,10 @@
-import Image from 'next/image';
+import Image from "next/image";
 import { BsSearch } from "react-icons/bs";
 import { FaIdCard } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
 import style from "../style/ownersitter.module.css";
-import Link from 'next/link';
+import Link from "next/link";
 
 const Owner = () => {
   const data = [
@@ -49,30 +49,28 @@ const Owner = () => {
           </h1>
 
           {data.map((val) => (
-            <>
+            <div
+              key={val.id}
+              className="w-full h-full flex flex-row justify-center items-center mt-12"
+            >
+              {/* left  */}
               <div
-                key={val.id}
-                className="w-full h-full flex flex-row justify-center items-center mt-12"
+                className={`p-4 border-[3px] border-lime-500 hover:bg-lime-500 transition rounded-full ${style.icon_box}`}
               >
-                {/* left  */}
-                <div
-                  className={`p-4 border-[3px] border-lime-500 hover:bg-lime-500 transition rounded-full ${style.icon_box}`}
+                <span
+                  className={`${style.icon} block text-lime-500 hover:text-white text-2xl font-extrabold`}
                 >
-                  <span
-                    className={`${style.icon} block text-lime-500 hover:text-white text-2xl font-extrabold`}
-                  >
-                    {val.icon}
-                  </span>
-                </div>
-                {/* right  */}
-                <div className="ml-6 flex flex-col justify-start items-start">
-                  <h1 className="text-xl mb-4 text-gray-600">{val.title}</h1>
-                  <p className="text-sm text-gray-500 w-full md:w-[420px]">
-                    {val.body}
-                  </p>
-                </div>
+                  {val.icon}
+                </span>
               </div>
-            </>
+              {/* right  */}
+              <div className="ml-6 flex flex-col justify-start items-start">
+                <h1 className="text-xl mb-4 text-gray-600">{val.title}</h1>
+                <p className="text-sm text-gray-500 w-full md:w-[420px]">
+                  {val.body}
+                </p>
+              </div>
+            </div>
           ))}
           <div className="mt-14">
             <Link href="/job">
@@ -86,6 +84,6 @@ const Owner = () => {
       </div>
     </>
   );
-}
+};
 
-export default Owner
+export default Owner;
