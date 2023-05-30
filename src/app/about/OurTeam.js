@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
@@ -105,11 +104,11 @@ const OurTeam = () => {
                                     </div>
                               </div>
                         ))}
-          </div>
-        </section>
+                  </div>
+            </section>
       </main>
     </>
   );
-};
+}
 
-export default OurTeam;
+export default OurTeam
