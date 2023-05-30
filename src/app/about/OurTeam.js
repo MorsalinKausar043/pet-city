@@ -53,17 +53,13 @@ const OurTeam = () => {
             Our Team
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {members?.map((member, idx) => (
+            {members?.map((member) => (
               <div
                 key={member._id}
                 className="relative group overflow-hidden box-border bg-white border-2 border-white p-1 rounded-md shadow-lg shadow-gray-300/80"
               >
                 <div className="relative w-full h-[245px]">
-                  <Image
-                    alt="Developer"
-                    src={member.img}
-                    fill={true}
-                  />
+                  <Image alt="Developer" src={member.img} fill={true} />
                   <div className="invisible group-hover:visible absolute top-0 left-0 w-full h-full bg-[rgba(17,34,49,0.4)]">
                     <div className="absolute bottom-[32px] w-full flex justify-center gap-[16px] mt-auto">
                       <Link
