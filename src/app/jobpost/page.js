@@ -6,15 +6,9 @@ const page = () => {
   const jobTypes = [ "Unspecified", "Pet Sitter", "Dog Sitter", "Cat Sitter", "Dog Walker"];
   const jobCategories = [ "Unspecified", "Pet Feeding", "Cat Feeding"];
 
-  // const [email, setEmail] = UseState("");
-  // const [title , setTitle ] = UseState("");
-  // const [location , setLocation ] = UseState("");
-  // const [description, setDescription] = UseState("");
-  // const [jobType, setJobType] = UseState("Unspecified");
-  // const [jobCategory, setJobCategory] = UseState("Unspecified");
-  // const [url, setURL] = UseState("");
   const [formData, setFormData] = UseState({
-
+      name: "",
+      email:""
   });
 
   const handleInput = (e) =>{
