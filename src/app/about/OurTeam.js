@@ -1,9 +1,11 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const OurTeam = () => {
       const members = [
             {
+                  "_id": 1,
                   "full_name": "John Doe",
                   "designation": "CEO",
                   "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
@@ -13,6 +15,7 @@ const OurTeam = () => {
                   "instagram": <FaInstagram/>         
             },
             {
+                  "_id": 2,
                   "full_name": "Michael Smith",
                   "designation": "Web Designer",
                   "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
@@ -22,6 +25,7 @@ const OurTeam = () => {
                   "instagram": <FaInstagram/>   
             },
             {
+                  "_id": 3,
                   "full_name": "Sasha Gray",
                   "designation": "PHP Developer",
                   "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
@@ -31,6 +35,7 @@ const OurTeam = () => {
                   "instagram": <FaInstagram/>  
             },
             {
+                  "_id": 4,
                   "full_name": "Hanna Doe",
                   "designation": "HTML Coder",
                   "body": "Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem",
@@ -48,15 +53,17 @@ const OurTeam = () => {
                         Our Team
                   </h1>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {members?.map((member, idx) => (
+                        {members?.map(member => (
                               <div
                                     className="relative group overflow-hidden box-border bg-white border-2 border-white p-1 rounded-md shadow-lg shadow-gray-300/80"
                               >
-                                    <div className="relative h-[245px]">
-                                          <img
-                                                alt="Developer"
+                                    <div className="relative h-[300px]">
+                                          <Image
                                                 src={member.img}
-                                                className="w-full h-full object-cover"
+                                                width={544}
+                                                height={300}
+                                                alt="about-image"
+                                                className='w-full h-full object-cover'
                                           />
                                           <div className="invisible group-hover:visible absolute top-0 left-0 w-full h-full bg-[rgba(17,34,49,0.4)]">
                                                 <div className="absolute bottom-[32px] w-full flex justify-center gap-[16px] mt-auto">
