@@ -27,7 +27,6 @@ const page = () => {
     
     alert("Data Submitted")
     console.log(formData);
-    
   }
 // console.log("jobType---", jobType)
 // console.log("jobCategory---", jobCategory)
