@@ -1,23 +1,26 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState as UseState } from "react";
 
 const page = () => {
   const jobTypes = [ "Unspecified", "Pet Sitter", "Dog Sitter", "Cat Sitter", "Dog Walker"];
   const jobCategories = [ "Unspecified", "Pet Feeding", "Cat Feeding"];
 
-  const [email, setEmail] = useState("");
-  const [title , setTitle ] = useState("");
-  const [location , setLocation ] = useState("");
-  const [description, setDescription] = useState("");
-  const [jobType, setJobType] = useState("Unspecified");
-  const [jobCategory, setJobCategory] = useState("Unspecified");
-  const [url, setURL] = useState("");
+  const [formData, setFormData] = UseState({
+      name: "",
+      email:""
+  });
+
+  const handleInput = (e) =>{
+    const {name, value} = e.target;
+    setFormData({...formData,[name]:value});
+  }
 
   const handleLoginSubmit = e => {
     e.preventDefault();
     
     alert("Data Submitted")
+    console.log(formData);
   }
 // console.log("jobType---", jobType)
 // console.log("jobCategory---", jobCategory)
