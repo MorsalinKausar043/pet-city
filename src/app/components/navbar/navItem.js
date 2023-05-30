@@ -57,7 +57,7 @@ const Nav = () => {
               </Link>
             </li>
           ))}
-          <Button>Get Started</Button>
+          <Button>Join Us</Button>
         </ul>
       </div>
     </div>

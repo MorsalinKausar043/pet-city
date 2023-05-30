@@ -7,13 +7,13 @@ import { MdLocationPin } from "react-icons/md";
 const JobDetails = () => {
   return (
     <>
-      <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
         {/* profile part  */}
         <div className="w-full h-auto flex flex-row flex-wrap justify-center md:justify-start items-center md:items-start">
           {/* left site  */}
           <div className="p-1 border-[1px] border-gray-400 rounded-md">
             <Image
-              class="object-cover object-center rounded"
+              className="object-cover object-center rounded"
               alt="hero"
               src="/login_bg.jpg"
               //   src="https://dummyimage.com/720x600"
@@ -63,7 +63,7 @@ const JobDetails = () => {
             {/* apply button  */}
             <div className="mt-4 md:mt-8 flex justify-center md:justify-start items-center">
               <Link href="/">
-                <button class="bg-lime-500 hover:bg-lime-600 text-white font-light py-2 px-4 rounded flex justify-center items-center">
+                <button className="bg-lime-500 hover:bg-lime-600 text-white font-light py-2 px-4 rounded flex justify-center items-center">
                   <span>
                     <AiOutlineSend />
                   </span>
@@ -98,7 +98,7 @@ const JobDetails = () => {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29197.34005481236!2d90.34552536648118!3d23.83041962475714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c13737cf6959%3A0xf4b3c8e9c0e5a171!2z4KaX4KeL4Kay4Ka-4KaqIOCml-CnjeCmsOCmvuCmrg!5e0!3m2!1sbn!2sbd!4v1684047185823!5m2!1sbn!2sbd"
               className="w-full h-[300px] rounded-md"
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </div>
