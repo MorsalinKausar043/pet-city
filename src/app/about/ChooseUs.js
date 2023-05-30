@@ -15,13 +15,13 @@ const ChooseUs = () => {
       };
       
       const progressBarData = [
-            { "id": 1, "title": "UI Design", "value": 80},
-            { "id": 2, "title": "Branding & Identity", "value": 70},
-            { "id": 3, "title": "JavaScript", "value": 60},
-            { "id": 4, "title": "HTML5&CSS3", "value": 90},
-            { "id": 5, "title": "WordPress", "value": 70},
-            { "id": 6, "title": "PHP & MySQL", "value": 60},
-            { "id": 7, "title": "SEO", "value": 45},
+            { "id": 1, "title": "Pet Sitter", "value": 80 },
+            { "id": 2, "title": "Dog Sitter", "value": 70 },
+            { "id": 3, "title": "Cat Sitter", "value": 50 },
+            { "id": 4, "title": "Dog Walker", "value": 90 },
+            { "id": 5, "title": "Cat Walker", "value": 70 },
+            { "id": 6, "title": "Pet Walker", "value": 40 },
+            { "id": 7, "title": "Pet Care", "value": 95 },
       ]
       return (
             <div className="bg-zinc-100">
@@ -103,7 +103,7 @@ const ChooseUs = () => {
                                     </h1>
                                     {
                                           progressBarData?.map( data => (
-                                                <div key={data.id} className="w-full h-10 rounded-l-md  bg-white mb-5">
+                                                <div key={data.id} className="w-full h-9 rounded-l-md  bg-white mb-5">
                                                       <div style={{width: `${ data.value }%`}} className="h-full px-3 flex items-center justify-between text-white bg-lime-500 rounded-l-md">
                                                             <span className="text-sm">{data.title}</span>
                                                             <span className="text-sm">{data.value}%</span>

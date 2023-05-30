@@ -20,6 +20,7 @@ const page = () => {
                         <br />
                         <br />
                         <div className="flex justify-between items-center flex-wrap border-b-[.5px] border-gray-300 pb-14">
+                        {/* <div className="grid border-b-[.5px] border-gray-300 pb-14"> */}
                               <ContactForm/>
                               <ContactUs/>
                         </div>

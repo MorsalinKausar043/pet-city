@@ -1,11 +1,11 @@
 
 const ContactForm = () => {
       return (
-            <div className="py-10 box-border bg-white border-2 border-white p-5 rounded-md shadow-lg shadow-gray-300/80 sm:w-full md:w-auto lg:w-auto">
+            <div className="py-10 box-border bg-white border-2 border-white p-5 rounded-md shadow-lg shadow-gray-300/80 w-full 2xl:w-auto">
                   <h1 className="text-lg font-bold text-gray-500 mb-5">Contact Form</h1>
                   <form>
                         {/* <div className="flex justify-between items-center flex-wrap"> */}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-4">
                               <div>
                                     <h4 className="text-sm text-gray-700 mb-2">Name <span className="text-red-500">*</span></h4>
                                     <input
