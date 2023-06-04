@@ -5,9 +5,10 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import Auth from "@/app/firebase/firebase.init";
+import { ToastError, ToastSuccess } from "@/app/utils/toast";
 
 // user signUp part
-const signUpUser = createAsyncThunk(
+export const signUpUser = createAsyncThunk(
   "Auth/signUpUser",
   async ({ email, password }) => {
     const result = await createUserWithEmailAndPassword(Auth, email, password);
@@ -16,7 +17,7 @@ const signUpUser = createAsyncThunk(
 );
 
 // user signIn part
-const signInUser = createAsyncThunk(
+export const signInUser = createAsyncThunk(
   "Auth/signInUser",
   async ({ email, password }) => {
     const result = await signInWithEmailAndPassword(Auth, email, password);
@@ -53,6 +54,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.email = action.payload;
         localStorage.setItem("email", JSON.stringify(action.payload));
+        ToastSuccess("Register Successful!");
         state.isError = false;
       })
       .addCase(signUpUser.rejected, (state, action) => {
@@ -61,6 +63,7 @@ const authSlice = createSlice({
         state.email = "";
         state.isError = true;
         state.errorMassage = action.error.message;
+        ToastError(action.error.message);
       })
       // signIn part ----------------->
       .addCase(signInUser.pending, (state) => {
@@ -73,6 +76,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.email = action.payload;
         localStorage.setItem("email", JSON.stringify(action.payload));
+        ToastSuccess("Login Successful!");
         state.isError = false;
       })
       .addCase(signInUser.rejected, (state, action) => {
@@ -81,6 +85,7 @@ const authSlice = createSlice({
         state.email = "";
         state.isError = true;
         state.errorMassage = action.error.message;
+        ToastError(action.error.message);
       });
   },
 });

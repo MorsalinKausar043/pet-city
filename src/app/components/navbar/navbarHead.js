@@ -1,9 +1,34 @@
 import Link from "next/link";
-import { IoCreateOutline } from "react-icons/io5";
+import { IoCreateOutline, IoLogOutOutline } from "react-icons/io5";
 import { AiFillLock, AiOutlineMail } from "react-icons/ai";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import {
+  useDispatch as UseDispatch,
+  useSelector as UseSelector,
+} from "react-redux";
+import { signOut } from "firebase/auth";
+import Auth from "@/app/firebase/firebase.init";
+import { logOutUser } from "@/app/redux/fetures/Auth/authSlice";
+import { ToastSuccess } from "@/app/utils/toast";
 
 const NavbarHead = () => {
+  const { email } = UseSelector((state) => state.user);
+  const dispatch = UseDispatch();
+  // logout function
+  const logOut = () => {
+    signOut(Auth)
+      .then(() => {
+        // Sign-out successful.
+        dispatch(logOutUser());
+        localStorage.clear();
+        ToastSuccess("Logout Successful!");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <section className="bg-zinc-800 w-full h-auto hidden md:block border-b-4 border-lime-400">
@@ -54,23 +79,41 @@ const NavbarHead = () => {
           {/* right side  */}
           <div>
             <div className="flex justify-center items-center flex-row">
-              <Link href="/signup">
-                <div className="flex justify-center items-center flex-row text-xs font-light text-gray-400 hover:text-gray-100 transition">
-                  <span className="mr-2 text-sm">
-                    <IoCreateOutline />
+              {email ? (
+                <>
+                  <button
+                    onClick={logOut}
+                    className="flex justify-center items-center flex-row text-xs font-light text-gray-400 hover:text-gray-100 transition"
+                  >
+                    <span className="mr-1 text-xl">
+                      <IoLogOutOutline />
+                    </span>
+                    <span>LogOut</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/signup">
+                    <div className="flex justify-center items-center flex-row text-xs font-light text-gray-400 hover:text-gray-100 transition">
+                      <span className="mr-2 text-sm">
+                        <IoCreateOutline />
+                      </span>
+                      <span>REGISTER</span>
+                    </div>
+                  </Link>
+                  <span className="mx-3 text-xs font-light text-gray-400">
+                    |
                   </span>
-                  <span>REGISTER</span>
-                </div>
-              </Link>
-              <span className="mx-3 text-xs font-light text-gray-400">|</span>
-              <Link href="/signin">
-                <div className="flex justify-center items-center flex-row text-xs font-light text-gray-400 hover:text-gray-100 transition">
-                  <span className="mr-2 text-sm">
-                    <AiFillLock />
-                  </span>
-                  <span>LOGIN</span>
-                </div>
-              </Link>
+                  <Link href="/signin">
+                    <div className="flex justify-center items-center flex-row text-xs font-light text-gray-400 hover:text-gray-100 transition">
+                      <span className="mr-2 text-sm">
+                        <AiFillLock />
+                      </span>
+                      <span>LOGIN</span>
+                    </div>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { MdCreate } from "react-icons/md";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { BsStarFill } from "react-icons/bs";
+import Link from "next/link";
 
 const Sitter = () => {
   const data = [
@@ -73,10 +74,14 @@ const Sitter = () => {
             </div>
           ))}
           <div className="mt-14">
-            <button className="bg-lime-500 flex flex-row justify-center items-center hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-semibold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded">
-              <span className="inline-block mr-2">Join as a Pets Sitters</span>
-              <FiArrowRightCircle className="inline-block text-xl" />
-            </button>
+            <Link href="/jobpost">
+              <button className="bg-lime-500 flex flex-row justify-center items-center hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-semibold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded">
+                <span className="inline-block mr-2">
+                  Join as a Pets Sitters
+                </span>
+                <FiArrowRightCircle className="inline-block text-xl" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
