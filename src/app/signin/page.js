@@ -1,17 +1,25 @@
 "use client";
 
 import { useState as UseState } from "react";
+import {
+  useSelector as UseSelector,
+  useDispatch as UseDispatch,
+} from "react-redux";
+import { signInUser } from "../redux/fetures/Auth/authSlice";
 
 const page = () => {
   const [email, setEmail] = UseState("");
   const [password, setPassword] = UseState("");
+  const dispatch = UseDispatch();
+  // submit form data
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
-    alert("Data Submitted");
+    dispatch(signInUser({ email, password }));
     setEmail("");
     setPassword("");
   };
+  // get user
+  const { isLoading } = UseSelector((state) => state.user);
   return (
     <>
       <main
@@ -61,6 +69,7 @@ const page = () => {
             </div>
             <button
               type="submit"
+              disabled={isLoading}
               className="text-white bg-lime-500 border-0 py-2 px-8 focus:outline-none hover:bg-lime-600 rounded text-lg"
             >
               Sign In
