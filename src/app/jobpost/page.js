@@ -1,10 +1,17 @@
 "use client";
 import axios from "axios";
-import { useState as UseState } from "react";
+import { useState as UseState, useEffect as UseEffect } from "react";
+// import { useSelector as UseSelector } from "react-redux";
+import { usePostJobMutation as UsePostJobMutation } from "../redux/service/api/jobApi";
+import { ToastError, ToastSuccess } from "../utils/toast";
+import { BiLoaderAlt } from "react-icons/bi";
 
 const page = () => {
+  const email = JSON.parse(localStorage.getItem("email"));
+  const [postJob, { isLoading, isSuccess, isError, error }] =
+    UsePostJobMutation();
   const [formData, setFormData] = UseState({
-    email: "",
+    email: email,
     title: "",
     location: "",
     jobType: "",
@@ -12,6 +19,8 @@ const page = () => {
     description: "",
     url: "",
   });
+  const [imgLoading, setImgLoading] = UseState(false);
+  const [imgSuccess, setImgSuccess] = UseState(false);
   const [photoURL, setPhotoURL] = UseState("");
   const jobTypes = [
     "Unspecified",
@@ -29,11 +38,32 @@ const page = () => {
   // submit input data
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...formData, photoURL });
+    const jobInfo = { ...formData, photoURL };
+    postJob(jobInfo);
   };
+
+  UseEffect(() => {
+    if (!isLoading && isSuccess) {
+      ToastSuccess("Form Submit complete!");
+      setFormData({
+        title: "",
+        location: "",
+        jobType: "",
+        jobCategory: "",
+        description: "",
+        url: "",
+      });
+      setPhotoURL([]);
+    }
+    if (!isLoading && !isSuccess && isError) {
+      ToastError("Something was Wrong!");
+      console.log(error);
+    }
+  }, [isLoading, isSuccess, isError]);
 
   // handle image input field
   const imageUploadHandler = (e) => {
+    setImgLoading(true);
     const imageData = new FormData();
     imageData.set("key", "74355ef6f713c59f526e96ca148bd85b");
     imageData.append("image", e.target.files[0]);
@@ -42,11 +72,14 @@ const page = () => {
       .then((response) => {
         let imageData = response?.data?.data.display_url;
         setPhotoURL(imageData);
+        setImgLoading(false);
+        setImgSuccess(true);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   return (
     <>
       <main className="w-full">
@@ -63,7 +96,8 @@ const page = () => {
                 onChange={handleOnChange}
                 className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
                 placeholder="Enter your email here"
-                value={formData?.email}
+                value={formData.email}
+                readOnly
               />
               <h4 className="text-sm text-gray-700 mb-2">
                 Job Title <span className="text-red-500">*</span>
@@ -158,10 +192,19 @@ const page = () => {
 
               <button
                 type="submit"
-                disabled={!photoURL}
-                className="bg-sky-500 hover:bg-sky-600 shadow-lg shadow-sky-200/10 text-white font-bold py-3 px-6 border-b-4 border-sky-700 hover:border-sky-700 rounded"
+                disabled={imgLoading && !imgSuccess}
+                className="bg-lime-500 hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-bold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded"
               >
-                <span className="inline-block mr-2">Preview Job Listing →</span>
+                <span className="inline-block mr-2">
+                  {imgLoading && !imgSuccess ? (
+                    <div className="flex justify-center items-center flex-row">
+                      <BiLoaderAlt className="animate-spin mr-3" />
+                      Processing...
+                    </div>
+                  ) : (
+                    "Submit Job"
+                  )}
+                </span>
               </button>
             </form>
           </div>

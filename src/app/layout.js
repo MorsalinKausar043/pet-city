@@ -14,6 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const [loader, SetLoader] = UseState(true);
+
   UseEffect(() => {
     // work on preloader
     setTimeout(() => window.addEventListener("load", SetLoader(false)), 1000);
