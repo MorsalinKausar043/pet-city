@@ -10,10 +10,12 @@ import { signOut } from "firebase/auth";
 import Auth from "@/app/firebase/firebase.init";
 import { logOutUser } from "@/app/redux/fetures/Auth/authSlice";
 import { ToastSuccess } from "@/app/utils/toast";
+import { useRouter as UseRouter } from "next/navigation";
 
 const NavbarHead = () => {
   const { email } = UseSelector((state) => state.user);
   const dispatch = UseDispatch();
+  const router = UseRouter();
   // logout function
   const logOut = () => {
     signOut(Auth)
@@ -22,6 +24,7 @@ const NavbarHead = () => {
         dispatch(logOutUser());
         localStorage.clear();
         ToastSuccess("Logout Successful!");
+        router.push("/");
       })
       .catch((error) => {
         // An error happened.
