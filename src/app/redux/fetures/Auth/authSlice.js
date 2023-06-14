@@ -26,7 +26,7 @@ export const signInUser = createAsyncThunk(
 );
 
 const authSlice = createSlice({
-  name: Auth,
+  name: "Auth",
   initialState,
   reducers: {
     saveUser: (state, action) => {
