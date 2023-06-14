@@ -1,10 +1,15 @@
+import { setModal } from "@/app/redux/fetures/filter/filterSlice";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClockCircle, AiOutlineSend } from "react-icons/ai";
 import { MdLocationPin } from "react-icons/md";
+import { useDispatch as UseDispatch } from "react-redux";
 
 const JobDetails = () => {
+  const dispatch = UseDispatch();
+  const isAuthenticated = JSON.parse(localStorage.getItem("email"));
+
   return (
     <>
       <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
@@ -16,7 +21,6 @@ const JobDetails = () => {
               className="object-cover object-center rounded"
               alt="hero"
               src="/login_bg.jpg"
-              //   src="https://dummyimage.com/720x600"
               width={320}
               height={290}
             />
@@ -62,14 +66,16 @@ const JobDetails = () => {
             </div>
             {/* apply button  */}
             <div className="mt-4 md:mt-8 flex justify-center md:justify-start items-center">
-              <Link href="/">
-                <button className="bg-lime-500 hover:bg-lime-600 text-white font-light py-2 px-4 rounded flex justify-center items-center">
-                  <span>
-                    <AiOutlineSend />
-                  </span>
-                  <span className="inline-block ml-2">Apply Here</span>
-                </button>
-              </Link>
+              <button
+                disabled={!isAuthenticated}
+                onClick={() => dispatch(setModal(true))}
+                className="bg-lime-500 hover:bg-lime-600 text-white font-light py-2 px-4 rounded flex justify-center items-center"
+              >
+                <span>
+                  <AiOutlineSend />
+                </span>
+                <span className="inline-block ml-2">Apply Here</span>
+              </button>
             </div>
           </div>
         </div>
