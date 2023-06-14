@@ -6,7 +6,7 @@ import { FcSearch } from "react-icons/fc";
 import { MdOutlineLocationOn } from "react-icons/md";
 
 const page = () => {
-  const jobs = [1,2,3,4,5];
+  const jobs = [1, 2, 3, 4, 5];
   return (
     <>
       <section className="text-gray-600 body-font">

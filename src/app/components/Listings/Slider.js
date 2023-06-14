@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState as UseState, useEffect as UseEffect } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 const Slider = ({
@@ -7,14 +7,14 @@ const Slider = ({
   autoSlide = false,
   autoSlideInterval = 30000,
 }) => {
-  const [curr, setCurr] = useState(0);
+  const [curr, setCurr] = UseState(0);
 
   const prev = () =>
     setCurr((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
   const next = () =>
     setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
 
-  useEffect(() => {
+  UseEffect(() => {
     if (!autoSlide) return;
     const slideInterval = setInterval(next, autoSlideInterval);
     return () => clearInterval(slideInterval);
@@ -47,7 +47,7 @@ const Slider = ({
           <div className="flex items-center justify-center gap-2">
             {slides.map((_, i) => (
               <div
-                key={_}
+                key={i}
                 className={`
               transition-all w-3 h-3 bg-white rounded-full
               ${curr === i ? "p-2" : "bg-opacity-50"}

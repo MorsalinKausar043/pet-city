@@ -5,6 +5,7 @@ import { MdCreate } from "react-icons/md";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { BsStarFill } from "react-icons/bs";
+import Link from "next/link";
 
 const Sitter = () => {
   const data = [
@@ -49,36 +50,38 @@ const Sitter = () => {
           </h1>
 
           {data.map((val) => (
-            <>
+            <div
+              key={val.id}
+              className="w-full h-full flex flex-row justify-center items-center mt-12"
+            >
+              {/* left  */}
               <div
-                key={val.id}
-                className="w-full h-full flex flex-row justify-center items-center mt-12"
+                className={`p-4 border-[3px] border-lime-500 hover:bg-lime-500 transition rounded-full ${style.icon_box}`}
               >
-                {/* left  */}
-                <div
-                  className={`p-4 border-[3px] border-lime-500 hover:bg-lime-500 transition rounded-full ${style.icon_box}`}
+                <span
+                  className={`${style.icon} block text-lime-500 hover:text-white text-2xl font-extrabold`}
                 >
-                  <span
-                    className={`${style.icon} block text-lime-500 hover:text-white text-2xl font-extrabold`}
-                  >
-                    {val.icon}
-                  </span>
-                </div>
-                {/* right  */}
-                <div className="ml-6 flex flex-col justify-start items-start">
-                  <h1 className="text-xl mb-4 text-gray-600">{val.title}</h1>
-                  <p className="text-sm text-gray-500 w-full md:w-[420px]">
-                    {val.body}
-                  </p>
-                </div>
+                  {val.icon}
+                </span>
               </div>
-            </>
+              {/* right  */}
+              <div className="ml-6 flex flex-col justify-start items-start">
+                <h1 className="text-xl mb-4 text-gray-600">{val.title}</h1>
+                <p className="text-sm text-gray-500 w-full md:w-[420px]">
+                  {val.body}
+                </p>
+              </div>
+            </div>
           ))}
           <div className="mt-14">
-            <button className="bg-lime-500 flex flex-row justify-center items-center hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-semibold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded">
-              <span className="inline-block mr-2">Join as a Pets Sitters</span>
-              <FiArrowRightCircle className="inline-block text-xl" />
-            </button>
+            <Link href="/jobpost">
+              <button className="bg-lime-500 flex flex-row justify-center items-center hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-semibold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded">
+                <span className="inline-block mr-2">
+                  Join as a Pets Sitters
+                </span>
+                <FiArrowRightCircle className="inline-block text-xl" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

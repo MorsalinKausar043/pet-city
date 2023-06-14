@@ -4,14 +4,14 @@ import OurSite from "./OurSite";
 import OurTeam from "./OurTeam";
 
 const page = () => {
-      return (
-            <>
-                  <OurSite/>
-                  <ChooseUs/>
-                  <OurTeam/>
-                  <OurClients/>
-            </>
-      );
+  return (
+    <>
+      <OurSite />
+      <ChooseUs />
+      <OurTeam />
+      <OurClients />
+    </>
+  );
 };
 
 export default page;

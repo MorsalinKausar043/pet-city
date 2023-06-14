@@ -4,6 +4,7 @@ import React from "react";
 import JobDetails from "@/app/components/job/jobDetails";
 import AnotherJobs from "@/app/components/job/anotherJobs";
 
+
 const page = ({ params }) => {
   return (
     <>

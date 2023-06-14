@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import OwnerSitter from "./components/home/OwnerSitter";
 import MainFeatures from "./components/home/mainfeatures/mainFeatures";
