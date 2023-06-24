@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyC4A3k5rI6J44ANFnRFnxk9dConCKCOixA",
-  authDomain: "chatmohor-beboshahi-shomiti.firebaseapp.com",
-  projectId: "chatmohor-beboshahi-shomiti",
-  storageBucket: "chatmohor-beboshahi-shomiti.appspot.com",
-  messagingSenderId: "581524705207",
-  appId: "1:581524705207:web:d2ea1b4a28afea9ae3a232",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };

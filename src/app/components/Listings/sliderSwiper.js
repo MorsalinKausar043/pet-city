@@ -12,32 +12,18 @@ const SliderSwiper = () => {
     const sliderImage = [
       {
         id: 1,
-        img: "https://i.ibb.co/ncrXc2V/1.png",
-        user: "morsalin kausar",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aliquid minus vitae harum facilis fuga?",
-        type: "cat sitter",
+        img: "https://i.ibb.co/DfyGT1c/pexels-lorenzo-messina-6560089.jpg",
+        user: "Cat Feeding",
+        body: "Feed your cat tinned and dried cat food – Both tinned and dried food will give your cat the nourishment they need, but dried food also helps to clean their teeth.",
+        type: "Cat sitter",
       },
       {
         id: 2,
-        img: "https://i.ibb.co/B3s7v4h/2.png",
-        user: "jakir islam jakir",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aliquid minus vitae harum facilis fuga?",
+        img: "https://i.ibb.co/SwvQZvh/images.jpg",
+        user: "Pet Feeding",
+        body: "Feed your cat tinned and dried cat food – Both tinned and dried food will give your cat the nourishment they need, but dried food also helps to clean their teeth.",
         type: "cat sitter",
-      },
-      {
-        id: 3,
-        img: "https://i.ibb.co/XXR8kzF/3.png",
-        user: "ayub ali",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aliquid minus vitae harum facilis fuga?",
-        type: "cat sitter",
-      },
-      {
-        id: 4,
-        img: "https://i.ibb.co/yg7BSdM/4.png",
-        user: "afridi sayeed",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur aliquid minus vitae harum facilis fuga?",
-        type: "cat sitter",
-      },
+      }
     ];
   return (
     <>

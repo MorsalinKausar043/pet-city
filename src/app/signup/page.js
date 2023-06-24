@@ -8,6 +8,7 @@ import {
 } from "react-redux";
 import PublicRoute from "../utils/privateRoute/publicRoute";
 import { useRouter as UseRouter } from "next/navigation";
+import Link from "next/link";
 
 const page = () => {
   // get user
@@ -105,9 +106,25 @@ const page = () => {
               >
                 Sign Up
               </button>
-              <p className="text-xs text-gray-200 mt-3">
-                Literally you probably {"haven't"} heard of them jean shorts.
-              </p>
+              <div className="mt-6 flex justify-between items-center px-2">
+                <div class="flex items-start">
+                  <div class="flex items-center h-5">
+                    <input
+                      id="remember"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                  <label for="remember" class="ml-2 text-sm text-gray-200">
+                    you agree to our term and policy
+                  </label>
+                </div>
+                <Link href="/signin">
+                  <span className="text-sm text-gray-200 ">signin now!</span>
+                </Link>
+              </div>
             </form>
           </div>
         </main>

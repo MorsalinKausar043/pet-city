@@ -6,7 +6,7 @@ import AnotherJobs from "@/app/components/job/anotherJobs";
 import Modal from "@/app/components/modal/Modal";
 import { useSelector as UseSelector } from "react-redux";
 
-const page = ({ params }) => {
+const page = ({ params:{slug} }) => {
   const { modal } = UseSelector((state) => state.filter);
   return (
     <>
@@ -18,9 +18,9 @@ const page = ({ params }) => {
         )}
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col justify-center items-start ">
           {/* left site  */}
-          <JobDetails />
+          <JobDetails params={slug} />
           {/* right site  */}
-          <AnotherJobs />
+          <AnotherJobs params={slug} />
         </div>
       </section>
     </>

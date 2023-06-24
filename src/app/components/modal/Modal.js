@@ -23,7 +23,6 @@ const Modal = () => {
   // submit data
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     setFormData({
       firstName: "",
       lastName: "",

@@ -5,8 +5,10 @@ import Button from "../../utils/Button";
 import Link from "next/link";
 import { AiOutlineClose, AiOutlineMenuFold } from "react-icons/ai";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const { email } = useSelector((state) => state.user);
   let Links = [
     { name: "HOME", link: "/" },
     { name: "JOBS", link: "/job" },
@@ -57,7 +59,11 @@ const Nav = () => {
               </Link>
             </li>
           ))}
-          <Button>Join Us</Button>
+          {!email && (
+            <Link href="/signin">
+              <Button>Join Us</Button>
+            </Link>
+          )}
         </ul>
       </div>
     </div>

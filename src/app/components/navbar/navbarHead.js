@@ -28,7 +28,6 @@ const NavbarHead = () => {
       })
       .catch((error) => {
         // An error happened.
-        console.log(error);
       });
   };
 
