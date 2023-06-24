@@ -69,8 +69,6 @@ const Footer = () => {
             <div className="mt-6">
               {/* recent post data  */}
               <RecentPost />
-              <RecentPost />
-              <RecentPost />
             </div>
           </div>
           {/* GET OUR NEWSLETTER part  */}

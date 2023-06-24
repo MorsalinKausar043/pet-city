@@ -4,9 +4,11 @@ import { useState as UseState, useEffect as UseEffect } from "react";
 import { usePostJobMutation as UsePostJobMutation } from "../../redux/service/api/jobApi";
 import { ToastError, ToastSuccess } from "../../utils/toast";
 import { BiLoaderAlt } from "react-icons/bi";
+import { useRouter as UseRouter } from "next/navigation";
 
 const JobPost = () => {
   const email = JSON.parse(localStorage.getItem("email"));
+  const router = UseRouter();
   const [postJob, { isLoading, isSuccess, isError, error }] =
     UsePostJobMutation();
   const [formData, setFormData] = UseState({
@@ -16,19 +18,24 @@ const JobPost = () => {
     jobType: "",
     jobCategory: "",
     description: "",
-    url: "",
   });
+  const [photoURL, setPhotoURL] = UseState("");
   const [imgLoading, setImgLoading] = UseState(false);
   const [imgSuccess, setImgSuccess] = UseState(false);
-  const [photoURL, setPhotoURL] = UseState("");
   const jobTypes = [
     "Unspecified",
     "Pet Sitter",
     "Dog Sitter",
     "Cat Sitter",
-    "Dog Walker",
+    "Fish Walker",
+    "Bird Sitter",
   ];
-  const jobCategories = ["Unspecified", "Pet Feeding", "Cat Feeding"];
+  const jobCategories = [
+    "Unspecified",
+    "Pet Feeding",
+    "Cat Feeding",
+    "Bird Feeding",
+  ];
   //  handle input data
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -43,19 +50,18 @@ const JobPost = () => {
 
   UseEffect(() => {
     if (!isLoading && isSuccess) {
-      ToastSuccess("Form Submit complete!");
+      router.push("/");
       setFormData({
         title: "",
         location: "",
         jobType: "",
         jobCategory: "",
         description: "",
-        url: "",
       });
-      setPhotoURL([]);
+      ToastSuccess("Congratulations! Successfully Submitted.");
     }
     if (!isLoading && !isSuccess && isError) {
-      ToastError("Something was Wrong!");
+      ToastError("Sorry! something was wrong.");
       console.log(error);
     }
   }, [isLoading, isSuccess, isError]);
@@ -64,7 +70,7 @@ const JobPost = () => {
   const imageUploadHandler = (e) => {
     setImgLoading(true);
     const imageData = new FormData();
-    imageData.set("key", "74355ef6f713c59f526e96ca148bd85b");
+    imageData.set("key", "9b2b9d3d7ba993ac9cc97e348f937df0");
     imageData.append("image", e.target.files[0]);
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
@@ -75,7 +81,7 @@ const JobPost = () => {
         setImgSuccess(true);
       })
       .catch((error) => {
-        console.log(error);
+        setImgLoading(false);
       });
   };
 
@@ -110,12 +116,11 @@ const JobPost = () => {
                 placeholder="Enter your title here"
                 value={formData?.title}
               />
-              <h4 className="text-sm text-gray-700 mb-2">
-                Job Location <small>(optional)</small>
-              </h4>
+              <h4 className="text-sm text-gray-700 mb-2">Job Location</h4>
               <input
                 type="text"
                 name="location"
+                required
                 onChange={handleOnChange}
                 className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
                 placeholder="Enter your location here"
@@ -159,34 +164,23 @@ const JobPost = () => {
               <textarea
                 rows="5"
                 name="description"
+                required
                 onChange={handleOnChange}
                 className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
                 placeholder="Enter your Message here"
                 value={formData?.description}
               />
-              <h4 className="text-sm text-gray-700 mb-2">
-                Application email/URL
-              </h4>
-              <input
-                type="text"
-                name="url"
-                onChange={handleOnChange}
-                className="mb-5 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
-                placeholder="Enter your url here"
-                value={formData?.url}
-              />
-              <h4 className="text-sm text-gray-700 mb-2">
-                Photo (optional) <small>(optional)</small>
-              </h4>
+              <h4 className="text-sm text-gray-700 mb-2">Photo</h4>
               <input
                 type="file"
                 name="file"
                 className="mb-1 py-3 px-4 block w-full outline-none border-[1px] border-gray-200 rounded-md text-sm  dark:text-gray-400"
                 placeholder="Enter your title here"
                 onChange={imageUploadHandler}
+                required
               />
               <small className="text-sm block text-gray-500 mb-5">
-                Max. file size: 32 MB.
+                Max. file size: 16 MB.
               </small>
 
               <button
@@ -195,7 +189,7 @@ const JobPost = () => {
                 className="bg-lime-500 hover:bg-lime-600 shadow-lg shadow-lime-200/10 text-white font-bold py-3 px-6 border-b-4 border-lime-700 hover:border-lime-700 rounded"
               >
                 <span className="inline-block mr-2">
-                  {imgLoading && !imgSuccess ? (
+                  {(imgLoading && !imgSuccess) || isLoading & !isSuccess ? (
                     <div className="flex justify-center items-center flex-row">
                       <BiLoaderAlt className="animate-spin mr-3" />
                       Processing...

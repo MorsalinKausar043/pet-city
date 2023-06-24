@@ -1,12 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
-import { AiOutlineClockCircle } from "react-icons/ai";
 import { FcSearch } from "react-icons/fc";
-import { MdOutlineLocationOn } from "react-icons/md";
+import Jobs from "../components/job/Jobs";
 
 const page = () => {
-  const jobs = [1, 2, 3, 4, 5];
+  
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -51,51 +49,7 @@ const page = () => {
             </div>
             {/* jobs data  */}
             <div className="p-2 md:w-2/3 w-full">
-              {jobs.map((job) => (
-                <Link key={job} href={`/job/${job}`}>
-                  <div className="h-full my-4 flex justify-between flex-wrap items-center hover:border-lime-400 transition border-gray-200 border p-4 rounded-lg">
-                    {/* left site  */}
-                    <div className="flex flex-row justify-start items-center">
-                      <div className="h-14 w-14 relative mr-4">
-                        <Image
-                          alt="team"
-                          className=" bg-gray-100 object-cover object-center flex-shrink-0 rounded-full "
-                          src="/signUp_bg.jpg"
-                          fill={true}
-                        />
-                      </div>
-                      <div className="flex-grow">
-                        <h2 className="text-gray-900 title-font font-medium">
-                          Sadman Sakib
-                        </h2>
-                        <p className="text-gray-500">Pet Sitter</p>
-                      </div>
-                    </div>
-                    {/* middle site */}
-                    <div className="mt-2 md:mt-0">
-                      <h1 className="flex flex-row justify-center items-center text-sm font-light text-gray-400">
-                        <span className="text-lime-400 text-lg font-semibold">
-                          <MdOutlineLocationOn />
-                        </span>
-                        <span className="inline-block ml-1">
-                          Agargaon, Dhaka
-                        </span>
-                      </h1>
-                    </div>
-                    {/* right site  */}
-                    <div className="mt-2 md:mt-0">
-                      <h1 className="flex flex-row justify-center items-center text-sm font-light text-gray-400">
-                        <span>
-                          <AiOutlineClockCircle />
-                        </span>
-                        <span className="inline-block ml-1">
-                          Posted 1 day ago
-                        </span>
-                      </h1>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+              <Jobs />
             </div>
           </div>
         </div>

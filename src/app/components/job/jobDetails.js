@@ -1,17 +1,44 @@
 import { setModal } from "@/app/redux/fetures/filter/filterSlice";
+import { useGetJobApiQuery } from "@/app/redux/service/api/jobApi";
+import Loader from "@/app/utils/loader/Loader";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { AiOutlineClockCircle, AiOutlineSend } from "react-icons/ai";
+import { BiLogIn } from "react-icons/bi";
 import { MdLocationPin } from "react-icons/md";
 import { useDispatch as UseDispatch } from "react-redux";
 
-const JobDetails = () => {
+const JobDetails = ({ params }) => {
   const dispatch = UseDispatch();
   const isAuthenticated = JSON.parse(localStorage.getItem("email"));
 
-  return (
-    <>
+  // get single data
+  const { isError, isLoading, isSuccess, data } = useGetJobApiQuery(params);
+
+  const jobData = data?.data;
+
+  // date update
+  const date = new Date(jobData?.createdAt);
+
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+
+  const localTime = date.toLocaleString(undefined, options);
+
+  // implement data
+
+  let content;
+
+  if (isLoading && !isSuccess && !isError) {
+    content = <Loader />;
+  } else if (!isLoading && isSuccess && !isError) {
+    content = (
       <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
         {/* profile part  */}
         <div className="w-full h-auto flex flex-row flex-wrap justify-center md:justify-start items-center md:items-start">
@@ -20,7 +47,7 @@ const JobDetails = () => {
             <Image
               className="object-cover object-center rounded"
               alt="hero"
-              src="/login_bg.jpg"
+              src={jobData?.photoURL}
               width={320}
               height={290}
             />
@@ -28,13 +55,13 @@ const JobDetails = () => {
           {/* right site  */}
           <div className="ml-0 md:ml-5 mt-4 md:mt-0">
             <h1 className="text-gray-700 font-semibold text-xl md:text-3xl mb-1">
-              Morsalin Kausar
+              {jobData?.title}
             </h1>
             <p className="text-gray-500 italic font-light text-sm">
-              Please write a few words about your job/service
+              {jobData?.email}
             </p>
             <div className="my-4 flex flex-row justify-center md:justify-start items-center">
-              <span className="text-gray-400 text-md">Cat Sitter</span>
+              <span className="text-gray-400 text-md">{jobData?.jobType}</span>
               <span className="text-gray-400 w-[3px] h-[3px] rounded-full bg-slate-400 inline-block mx-3"></span>
               <span className="text-gray-400 text-md inline-block">
                 Dog Walker
@@ -50,7 +77,7 @@ const JobDetails = () => {
                 <span className="text-gray-400 text-sm font-light ml-1  my-1 ">
                   Looking within 20 miles of{" "}
                   <span className="text-lime-500 hover:underline transition cursor-pointer">
-                    Mirpur, Dhaka
+                    {jobData?.location}
                   </span>
                 </span>
               </div>
@@ -60,7 +87,7 @@ const JobDetails = () => {
                   <AiOutlineClockCircle />
                 </span>
                 <span className="text-gray-400 text-sm font-light ml-1">
-                  Updated 4 minutes ago.
+                  Updated {localTime}.
                 </span>
               </div>
             </div>
@@ -69,7 +96,7 @@ const JobDetails = () => {
               <button
                 disabled={!isAuthenticated}
                 onClick={() => dispatch(setModal(true))}
-                className="bg-lime-500 hover:bg-lime-600 text-white font-light py-2 px-4 rounded flex justify-center items-center"
+                className="bg-lime-500 hover:bg-lime-600 disabled:bg-lime-300 text-white font-light py-2 px-4 rounded flex justify-center items-center"
               >
                 <span>
                   <AiOutlineSend />
@@ -80,21 +107,9 @@ const JobDetails = () => {
           </div>
         </div>
         {/* description part  */}
-        <div className="px-2 md:pr-6 text-sm my-8">
-          <h1 className="text-xl font-semibold mb-2">Description</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consequatur architecto sit eos. Nostrum libero facilis fuga quas
-            maiores, iure asperiores?
-          </p>
-          <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-            quasi, facilis recusandae excepturi dolorum nisi, labore aspernatur
-            magni fugit beatae eveniet consequatur inventore. Ipsum esse quidem
-            blanditiis pariatur perferendis sed debitis molestiae quos, beatae
-            earum voluptas nemo neque saepe facere?
-          </p>
+        <div className="px-2 md:pr-10 text-sm my-8">
+          <h1 className="text-xl font-semibold mb-4">Description</h1>
+          <p style={{ whiteSpace: "pre-wrap" }}>{jobData?.description}</p>
         </div>
         {/* location part  */}
         <div className="w-full h-auto px-2 md:pr-6 text-sm my-8">
@@ -109,8 +124,12 @@ const JobDetails = () => {
           </div>
         </div>
       </div>
-    </>
-  );
+    );
+  } else if (!isLoading && !isSuccess && isError) {
+    content = <p>Sorry Something Was Wrong!</p>;
+  }
+
+  return <>{content}</>;
 };
 
 export default JobDetails;
