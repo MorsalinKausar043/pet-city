@@ -46,13 +46,13 @@ const JobDetails = ({ params }) => {
         {/* profile part  */}
         <div className="w-full h-auto flex flex-row flex-wrap justify-center md:justify-start items-center md:items-start">
           {/* left site  */}
-          <div className="p-1 border-[1px] border-gray-400 rounded-md">
+          <div className="p-1 border-[1px] border-gray-400 relative w-64 h-60 overflow-hidden rounded-md">
             <Image
-              className="object-cover object-center rounded"
-              alt="hero"
+              className="rounded-md"
+              alt="pet-city-image-details"
               src={jobData?.photoURL}
-              width={320}
-              height={290}
+              object-fit="cover"
+              fill={true}
             />
           </div>
           {/* right site  */}
