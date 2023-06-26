@@ -12,23 +12,17 @@ import { useGetApplysApiQuery } from "@/app/redux/service/api/applyApi";
 const JobDetails = ({ params }) => {
   const dispatch = UseDispatch();
   const isAuthenticated = JSON.parse(localStorage.getItem("email"));
-
   // get single data
-  const {
-    isError,
-    isLoading,
-    isSuccess,
-    data: jobData,
-  } = useGetJobApiQuery(params);
+  const { isError, isLoading, isSuccess, data } = useGetJobApiQuery(params);
+  const jobData = data?.data;
   const { data: applyData } = useGetApplysApiQuery();
-
-  const applyUser = applyData?.data?.find(
-    (apply) => apply.jobId === params && apply.email === isAuthenticated
-  );
+  const applyUser = applyData?.data
+    ?.filter((apply) => apply.jobId === params)
+    ?.filter((job) => job?.email === isAuthenticated)[0];
+  // get new apply status
   const applyStatus = applyData?.data?.find(
     (apply) => apply.jobId === params && apply.status === true
   );
-
   // date update
   const date = new Date(jobData?.createdAt);
 
