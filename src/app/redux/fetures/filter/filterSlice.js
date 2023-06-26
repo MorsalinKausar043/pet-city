@@ -8,8 +8,11 @@ const filterSlice = createSlice({
     setModal: (state, action) => {
       state.modal = action.payload;
     },
+    filteringJOb: (state, action) => {
+      state.filterJob = action.payload;
+    },
   },
 });
 
-export const { setModal } = filterSlice.actions;
+export const { setModal, filteringJOb } = filterSlice.actions;
 export default filterSlice.reducer;

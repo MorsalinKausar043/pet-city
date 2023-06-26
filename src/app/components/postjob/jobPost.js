@@ -9,7 +9,7 @@ import { useRouter as UseRouter } from "next/navigation";
 const JobPost = () => {
   const email = JSON.parse(localStorage.getItem("email"));
   const router = UseRouter();
-  const [postJob, { isLoading, isSuccess, isError, error }] =
+  const [postJob, { isLoading, isSuccess, isError }] =
     UsePostJobMutation();
   const [formData, setFormData] = UseState({
     email: email,
@@ -51,18 +51,10 @@ const JobPost = () => {
   UseEffect(() => {
     if (!isLoading && isSuccess) {
       router.push("/");
-      setFormData({
-        title: "",
-        location: "",
-        jobType: "",
-        jobCategory: "",
-        description: "",
-      });
       ToastSuccess("Congratulations! Successfully Submitted.");
     }
     if (!isLoading && !isSuccess && isError) {
       ToastError("Sorry! something was wrong.");
-      console.log(error);
     }
   }, [isLoading, isSuccess, isError]);
 

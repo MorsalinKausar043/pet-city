@@ -4,7 +4,6 @@ import { useEffect as UseEffect } from "react";
 
 const PrivateRoute = ({ children }) => {
   const router = UseRouter();
-  console.log(router)
 
   UseEffect(() => {
     // Check if the user is authenticated or authorized

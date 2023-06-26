@@ -1,12 +1,17 @@
-"use client"
+"use client";
 import React from "react";
 import Link from "next/link";
+import { MdPeopleAlt } from "react-icons/md";
 import { useGetJobsApiQuery } from "@/app/redux/service/api/jobApi";
+import { useGetApplysApiQuery } from "@/app/redux/service/api/applyApi";
 
-const AnotherJobs = ({params}) => {
+const AnotherJobs = ({ params }) => {
   const { isError, isLoading, isSuccess, data } = useGetJobsApiQuery();
+  const { data: applyData } = useGetApplysApiQuery();
+  const applyUser = applyData?.data?.filter((apply) => apply.jobId === params);
   const jobData = data?.data
-    ?.slice()?.filter(job => job._id !== params)
+    ?.slice()
+    ?.filter((job) => job._id !== params)
     ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     ?.slice(0, 6);
   let content;
@@ -26,7 +31,7 @@ const AnotherJobs = ({params}) => {
               <h1 className="text-xs font-light">{location}</h1>
               <span className="text-gray-400 w-[3px] h-[3px] rounded-full bg-slate-400 inline-block mx-2"></span>
               <span className="text-xs font-light text-gray-400 text-md">
-                {createdAt.slice(0,10)}
+                {createdAt.slice(0, 10)}
               </span>
               <span className="text-gray-400 w-[3px] h-[3px] rounded-full bg-slate-400 inline-block mx-2"></span>
               <span className="text-xs font-light text-lime-400 text-md inline-block">
@@ -50,6 +55,17 @@ const AnotherJobs = ({params}) => {
         </h1>
         {/* body  */}
         {content}
+        {applyUser?.length > 0 && (
+          <div className=" mt-4 flex flex-row justify-start items-center">
+            <span>
+              <MdPeopleAlt />
+            </span>
+            <p className="text-md text-gray-600 font-semibold ml-2">
+              {applyUser?.length} {applyUser.length > 1 ? "persons" : "person"}{" "}
+              apply this job!
+            </p>
+          </div>
+        )}
       </div>
     </>
   );
