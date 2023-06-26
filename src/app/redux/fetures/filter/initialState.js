@@ -1,3 +1,4 @@
 export const initialState = {
-    modal:false
-}
+  modal: false,
+  filterJob: {},
+};

@@ -13,7 +13,7 @@ const page = ({ params:{slug} }) => {
       <section className="text-gray-600 body-font relative">
         {modal && (
           <div className="absolute w-full h-full inset-0 flex items-start mt-20 justify-center">
-            <Modal />
+            <Modal params={slug}/>
           </div>
         )}
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col justify-center items-start ">

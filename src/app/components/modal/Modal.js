@@ -1,14 +1,21 @@
 import { setModal } from "@/app/redux/fetures/filter/filterSlice";
-import { useState as UseState } from "react";
+import { usePostApplyMutation } from "@/app/redux/service/api/applyApi";
+import { ToastError, ToastSuccess } from "@/app/utils/toast";
+import { useRouter as UseRouter } from "next/navigation";
+import { useState as UseState, useEffect as UseEffect } from "react";
+import { BiLoaderAlt } from "react-icons/bi";
 import { useDispatch as UseDispatch } from "react-redux";
 
-const Modal = () => {
+const Modal = ({ params }) => {
   const dispatch = UseDispatch();
+  const [postApply, { isLoading, isSuccess, isError }] = usePostApplyMutation();
+  const router = UseRouter();
+  const email = JSON.parse(localStorage.getItem("email"));
   // handle input state
   const [formData, setFormData] = UseState({
     firstName: "",
     lastName: "",
-    email: "",
+    email: email,
     phone: "",
     address: "",
     description: "",
@@ -17,22 +24,29 @@ const Modal = () => {
   // handle input filed
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
   // submit data
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address: "",
-      description: "",
-    });
-    dispatch(setModal(false));
+    const applyInfo = { ...formData, jobId: params };
+    postApply(applyInfo);
   };
+
+  UseEffect(() => {
+    if (!isLoading && isSuccess) {
+      ToastSuccess("Congratulations! Apply Successful.");
+      dispatch(setModal(false));
+    }
+    if (!isLoading && !isSuccess && isError) {
+      ToastError("Sorry! something was wrong.");
+    }
+  }, [isLoading, isSuccess, isError, router, dispatch]);
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -59,11 +73,11 @@ const Modal = () => {
                 <input
                   type="text"
                   name="firstName"
-                  onChange={handleInput}
                   value={formData.firstName}
                   required
                   id="first-name"
                   autoComplete="given-name"
+                  onChange={handleInput}
                   className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -80,10 +94,10 @@ const Modal = () => {
                 <input
                   type="text"
                   name="lastName"
-                  onChange={handleInput}
-                  value={formData.lastName}
                   required
+                  value={formData.lastName}
                   id="last-name"
+                  onChange={handleInput}
                   autoComplete="family-name"
                   className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -106,6 +120,7 @@ const Modal = () => {
                   value={formData.email}
                   type="email"
                   autoComplete="email"
+                  readOnly
                   className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -187,9 +202,17 @@ const Modal = () => {
         </button>
         <button
           type="submit"
+          disabled={isLoading && !isSuccess}
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Apply
+          {isLoading & !isSuccess ? (
+            <div className="flex justify-center items-center flex-row">
+              <BiLoaderAlt className="animate-spin mr-3" />
+              Processing...
+            </div>
+          ) : (
+            "Apply"
+          )}
         </button>
       </div>
     </form>

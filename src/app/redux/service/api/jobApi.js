@@ -24,7 +24,7 @@ const jobApi = apiSlice.injectEndpoints({
     // update job
     updateJob: builder.mutation({
       // update single member ---------------->
-      query: ({ id, data }) => ({
+      query: ({ _id, data }) => ({
         url: `/job/${_id}`,
         method: "PATCH",
         body: data,

@@ -1,17 +1,48 @@
 "use client";
 import { useGetJobsApiQuery } from "@/app/redux/service/api/jobApi";
+import { dynamicSearch } from "@/app/shared/filterJobs";
 import Loader from "@/app/utils/loader/Loader";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { MdOutlineLocationOn } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Jobs = () => {
   const { isError, isLoading, isSuccess, data } = useGetJobsApiQuery();
+  const { title, location, type } = useSelector(
+    (state) => state.filter.filterJob
+  );
+
+  // filtering jobs
+  const searchByTitle = data?.data?.filter((job) =>
+    dynamicSearch(job?.title, title)
+  );
+
+  const searchByLocation = data?.data?.filter((job) =>
+    dynamicSearch(job?.location, location)
+  );
+
+  const searchByType = data?.data?.filter((job) =>
+    dynamicSearch(job?.jobType, type)
+  );
+
   const jobData = data?.data
     ?.slice()
+    ?.filter((job) =>
+      searchByTitle?.length > 0 ? dynamicSearch(job?.title, title) : job
+    )
+    ?.filter((job) =>
+      searchByLocation?.length > 0
+        ? dynamicSearch(job?.location, location)
+        : job
+    )
+    ?.filter((job) =>
+      searchByType?.length > 0 ? dynamicSearch(job?.jobType, type) : job
+    )
     ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   let content;
 
   if (isLoading && !isSuccess && !isError) {

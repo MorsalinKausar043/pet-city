@@ -4,19 +4,25 @@ import Loader from "@/app/utils/loader/Loader";
 import Image from "next/image";
 import React from "react";
 import { AiOutlineClockCircle, AiOutlineSend } from "react-icons/ai";
-import { BiLogIn } from "react-icons/bi";
 import { MdLocationPin } from "react-icons/md";
 import { useDispatch as UseDispatch } from "react-redux";
+import Apply from "./apply";
+import { useGetApplysApiQuery } from "@/app/redux/service/api/applyApi";
 
 const JobDetails = ({ params }) => {
   const dispatch = UseDispatch();
   const isAuthenticated = JSON.parse(localStorage.getItem("email"));
-
   // get single data
   const { isError, isLoading, isSuccess, data } = useGetJobApiQuery(params);
-
   const jobData = data?.data;
-
+  const { data: applyData } = useGetApplysApiQuery();
+  const applyUser = applyData?.data
+    ?.filter((apply) => apply.jobId === params)
+    ?.filter((job) => job?.email === isAuthenticated)[0];
+  // get new apply status
+  const applyStatus = applyData?.data?.find(
+    (apply) => apply.jobId === params && apply.status === true
+  );
   // date update
   const date = new Date(jobData?.createdAt);
 
@@ -28,11 +34,8 @@ const JobDetails = ({ params }) => {
     minute: "numeric",
     hour12: true,
   };
-
   const localTime = date.toLocaleString(undefined, options);
-
   // implement data
-
   let content;
 
   if (isLoading && !isSuccess && !isError) {
@@ -92,18 +95,44 @@ const JobDetails = ({ params }) => {
               </div>
             </div>
             {/* apply button  */}
-            <div className="mt-4 md:mt-8 flex justify-center md:justify-start items-center">
-              <button
-                disabled={!isAuthenticated}
-                onClick={() => dispatch(setModal(true))}
-                className="bg-lime-500 hover:bg-lime-600 disabled:bg-lime-300 text-white font-light py-2 px-4 rounded flex justify-center items-center"
-              >
-                <span>
-                  <AiOutlineSend />
-                </span>
-                <span className="inline-block ml-2">Apply Here</span>
-              </button>
-            </div>
+            {jobData?.email !== isAuthenticated && (
+              <div className="mt-4 md:mt-8 flex justify-center md:justify-start items-center">
+                {applyStatus ? (
+                  <div className="text-gray-500 text-sm">
+                    {applyUser?.email === isAuthenticated ? (
+                      <p>
+                        <span className="text-base text-green-500">
+                          Congratulation!
+                        </span>{" "}
+                        you are
+                        <span className="text-base text-green-500">
+                          {" "}
+                          Hired
+                        </span>{" "}
+                        on this job!
+                      </p>
+                    ) : (
+                      <p>already person hired on this job!</p>
+                    )}
+                  </div>
+                ) : applyUser?.email === isAuthenticated ? (
+                  <p className="text-gray-500 text-sm">
+                    You are already Apply this job!
+                  </p>
+                ) : (
+                  <button
+                    disabled={!isAuthenticated}
+                    onClick={() => dispatch(setModal(true))}
+                    className="bg-lime-500 hover:bg-lime-600 disabled:bg-lime-300 text-white font-light py-2 px-4 rounded flex justify-center items-center"
+                  >
+                    <span>
+                      <AiOutlineSend />
+                    </span>
+                    <span className="inline-block ml-2">Apply Here</span>
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
         {/* description part  */}
@@ -122,13 +151,13 @@ const JobDetails = ({ params }) => {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
+          {jobData?.email === isAuthenticated && <Apply params={params} />}
         </div>
       </div>
     );
   } else if (!isLoading && !isSuccess && isError) {
     content = <p>Sorry Something Was Wrong!</p>;
   }
-
   return <>{content}</>;
 };
 
